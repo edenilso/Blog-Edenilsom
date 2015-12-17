@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlogEdenilsom.DB.Infra
 {
-    public class MeuCriadorDeBanco: CreateDatabaseIfNotExists<ConexaoBanco>
+    public class MeuCriadorDeBanco: DropCreateDatabaseAlways<ConexaoBanco>
     {
         protected override void Seed(ConexaoBanco context)
         {
