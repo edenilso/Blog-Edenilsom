@@ -10,20 +10,20 @@ namespace BlogEdenilsomWeb.Models.Blog
 {
     public class DetalhesPostsViewModel
     {
-        
-  public int Id { get; set; }
-  public string Titulo { get; set; }
-  public string Autor { get; set; }
-  public string Resumo { get; set; }
-  public string Descricao { get; set; }
-  public DateTime DataPublicacao { get; set; }
-  public int QtdeComentarios { get; set; }
-  public bool Visivel { get; set; }
-  public IList<TagClass> Tags { get; set; }
+
+        public int Id { get; set; }
+        public string Titulo { get; set; }
+        public string Autor { get; set; }
+        public string Resumo { get; set; }
+        public string Descricao { get; set; }
+        public DateTime DataPublicacao { get; set; }
+        public int QtdeComentarios { get; set; }
+        public bool Visivel { get; set; }
+        public IList<TagClass> Tags { get; set; }
 
         /*CADASTRAR COMENTARIO*/
         [DisplayName("Nome")]
-        [StringLength(100, ErrorMessage ="O Campo Nome deve possuir no máximo {1} caracteres!")]
+        [StringLength(100, ErrorMessage = "O Campo Nome deve possuir no máximo {1} caracteres!")]
         [Required(ErrorMessage = "O Campo nome é Obrigatorio!")]
         public string ComentarioNome { get; set; }
 
@@ -40,5 +40,8 @@ namespace BlogEdenilsomWeb.Models.Blog
         [StringLength(100, ErrorMessage = "O Campo Página web deve possuir no máximo {1} caracteres!")]
         public string ComentarioPaginaWeb { get; set; }
 
+        public int PaginaAtual { get; set; }
+        public int TotalPaginas { get; set; }
+        public IList<Comentario> Comentario { get; set; }
     }
 }

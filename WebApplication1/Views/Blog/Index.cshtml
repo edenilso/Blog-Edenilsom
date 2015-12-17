@@ -2,17 +2,17 @@
 @{
     ViewBag.Title = "Posts";
     var tipoPesquisa = "";
-    if 
+    if
         (Model.Tag != null)
-        {
-            tipoPesquisa = string.Format(" - Tag: {0}", Model.Tag);
-        }
-    
+    {
+        tipoPesquisa = string.Format(" - Tag: {0}", Model.Tag);
+    }
+
 }
 
 @section Scripts
 {
-<script src="@Url.Content("~/Scripts/Views/Blog/index.js")"></script>
+    <script src="@Url.Content("~/Scripts/Views/Blog/index.js")"></script>
 }
 
 <h1>Posts @tipoPesquisa</h1>
@@ -23,13 +23,13 @@
         {
             <h2>
                 @Html.ActionLink(item.Titulo, "Post", "Blog", new
-       {
-           id = item.Id,
-           ano = item.DataPublicacao.Year,
-           mes = item.DataPublicacao.Month,
-           dia = item.DataPublicacao.Day,
-           titulo = HttpUtility.UrlDecode(item.Titulo)
-       }, null)
+           {
+               id = item.Id,
+               ano = item.DataPublicacao.Year,
+               mes = item.DataPublicacao.Month,
+               dia = item.DataPublicacao.Day,
+               titulo =item.Titulo
+           }, null)
             </h2>
             <div>
                 <div>
@@ -38,9 +38,15 @@
                     <div class="icone-autor div-imagem"></div>
                     @item.Autor
                     <div class="icone-comentario div-imagem"></div>
-                    @Html.ActionLink("0", "EditarPost", "Administracao", new { id = item.Id }, null)
-                   
-                     @if (Request.IsAuthenticated) { 
+                    <a href="@Url.Action("Post", "Blog", new
+               {
+                   id = item.Id,
+                   ano = item.DataPublicacao.Year,
+                   mes = item.DataPublicacao.Month,
+                   dia = item.DataPublicacao.Day,
+                   titulo = item.Titulo
+                   })#comentarios"> @item.QtdeComentarios</a>
+                     @if(Request.IsAuthenticated) {
                     <div class="icone-editar div-imagem"></div>
                     @Html.ActionLink("Editar", "EditarPost", "Administracao", new { id = item.Id }, null)
                     <div class="icone-excluir div-imagem"></div>
@@ -52,15 +58,17 @@
             <div>
                 @item.Resumo
             </div>
-            <div>@Html.ActionLink("Continue Lendo...","Post", "Blog", new
+            <div>
+                @Html.ActionLink("Continue Lendo...", "Post", "Blog", new
             {
                 id = item.Id,
                 ano = item.DataPublicacao.Year,
                 mes = item.DataPublicacao.Month,
                 dia = item.DataPublicacao.Day,
                 titulo = HttpUtility.UrlDecode(item.Titulo)
-            }, null)</div>
-        }
+            }, null)
+        </div>
+            }
     </div>
     <div class="col-md-2">
         <h3>Tags</h3>
@@ -73,5 +81,5 @@
         </ul>
     </div>
 </div>
-@Html.Partial("_Paginacao",Model)
+@Html.Partial("_Paginacao", Model)
 

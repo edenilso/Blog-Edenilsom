@@ -30,7 +30,7 @@ namespace BlogEdenilsomWeb.Models.Usuario
         [DisplayName("Confirmar Senha")]
         [Required(ErrorMessage = "O campo Senha é Obrigatorio.")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "A Confirmar senha deve possuir no maximo {1} caracteres.")]
-        [Compare("Senha",ErrorMessage = "As senhas digitadas não conferem.")]
+        [Compare("Senha", ErrorMessage = "As senhas digitadas não conferem.")]
         public string confirmarSenha { get; set; }
     }
 }
