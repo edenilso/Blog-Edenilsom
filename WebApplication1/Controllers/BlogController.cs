@@ -162,5 +162,10 @@ namespace BlogEdenilsomWeb.Controllers
             preencherViewModel(viewModel, post, null);
             return View(viewModel);
         }
+
+        public ActionResult _PaginacaoPost()
+        {
+            return PartialView();
+        }
     }
 }

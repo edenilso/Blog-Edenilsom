@@ -1,0 +1,32 @@
+﻿ @model BlogEdenilsomWeb.Models.Blog.DetalhesPostsViewModel
+@if (Model.TotalPaginas > 1)
+{
+    var paginaAnterior = Model.PaginaAtual - 1;
+    var proximaPagina = Model.PaginaAtual + 1;
+    <div class="pagination">
+       <a href="@Url.Action("Post", new {
+               id = Model.Id,
+               pagina = paginaAnterior
+                })#comentarios" rel="prev">Página Anterior</a>
+           if 
+         (proximaPagina != -1)
+        {
+        <text>|</text>
+        }
+
+        @if
+        (proximaPagina != -1)
+        {
+        <a href="@Url.Action("Post", new {
+               id = Model.Id,
+               pagina = proximaPagina
+                })#comentarios" rel="prev">Proxima Página</a>
+        
+        }
+
+        }
+            
+    </div>
+
+     
+}
